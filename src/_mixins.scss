@@ -1,0 +1,82 @@
+//
+// Mixins
+//
+
+// Responsive media queries
+@mixin breakpoint($breakpoint, $breakpoints: $breakpoints) {
+  @if $breakpoint == '' {
+    @content;
+  } @else {
+    $value: map-get($breakpoints, $breakpoint);
+    @if $value != null {
+      @media (min-width: $value) {
+        @content;
+      }
+    } @else {
+      @warn "Invalid breakpoint `#{$breakpoint}`.";
+    }
+  }
+}
+
+// Utility generator
+@mixin generate-utility(
+  $utility,
+  $responsive-variant,
+  $pseudo-class-variant: null,
+  $separator: $separator
+) {
+  $values: map-get($utility, values);
+
+  // If the values are a list or string, convert it into a map
+  @if (
+    (type-of($values) == 'string') or
+      (length($values) != 0 and type-of(nth($values, 1)) != 'list')
+  ) {
+    $values: zip($values, $values);
+  }
+
+  @each $key, $value in $values {
+    $properties: map-get($utility, property);
+
+    // Multiple properties are possible
+    // For example with vertical or horizontal margins or paddings
+    @if type-of($properties) == 'string' {
+      $properties: append((), $properties);
+    }
+
+    // Use custom class if present
+    $property-class: if(
+      map-has-key($utility, class),
+      map-get($utility, class),
+      nth($properties, 1)
+    );
+    $property-class: if($property-class == null, '', $property-class);
+
+    // Don't prefix if value key is null, an empty string or `default`
+    $property-class-modifier: if(
+      ($key and $key != '' and $key != default),
+      if($property-class == '', '', '-') + $key,
+      ''
+    );
+
+    // Use pseudo-class variant if present
+    $pseudo-prefix: if(
+      $pseudo-class-variant,
+      $pseudo-class-variant + $separator,
+      ''
+    );
+    $pseudo-suffix: if($pseudo-class-variant, ':' + $pseudo-class-variant, '');
+
+    @if $value != null {
+      .#{$responsive-variant
+        + $pseudo-prefix
+        + $property-class
+        + $property-class-modifier
+        + $pseudo-suffix} {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

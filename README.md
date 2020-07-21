@@ -1,2 +1,3 @@
-# css
-The CSS-only implementation of the Pluto design system
+# Pluto CSS
+
+A CSS toolkit that codifies the Pluto design language

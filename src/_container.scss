@@ -1,0 +1,15 @@
+//
+// Container
+//
+
+.container {
+  width: 100%;
+}
+
+.container {
+  @each $breakpoint, $width in $breakpoints {
+    @include breakpoint($breakpoint) {
+      max-width: $width;
+    }
+  }
+}

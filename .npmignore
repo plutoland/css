@@ -1,0 +1,5 @@
+*.log
+now.json
+docs/
+scripts/
+static/

@@ -1,0 +1,294 @@
+//
+// Theme
+//
+
+$separator: '\\:' !default;
+
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+) !default;
+
+$responsive-variants: make-responsive-variants(
+  $breakpoints,
+  $separator
+) !default;
+
+$colors: (
+  transparent: transparent,
+  current: currentColor,
+  white: #fff,
+  black: #000,
+  gray-50: #fafafa,
+  gray-100: #f3f3f3,
+  gray-900: #161616,
+  blue-50: #f1f8ff,
+  blue-100: #dbedff,
+  blue-500: #0366d6,
+  blue-600: #005cc5,
+  brand-blue: #0055ff,
+) !default;
+
+$gradients: () !default;
+
+$spacing: (
+  px: 1px,
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  4: 1rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  24: 6rem,
+  32: 8rem,
+  48: 12rem,
+  64: 16rem,
+) !default;
+
+$negative-spacing: negativify-map($spacing) !default;
+
+$border-radius: (
+  none: 0,
+  sm: 0.125rem,
+  default: 0.25rem,
+  md: 0.375rem,
+  lg: 0.5rem,
+  xl: 1rem,
+  2xl: 1.5rem,
+  full: 9999px,
+) !default;
+
+$border-width: (
+  default: 1px,
+  0: 0,
+  2: 2px,
+  4: 4px,
+  8: 8px,
+) !default;
+
+$box-shadow: (
+  none: none,
+  xs: 0 0 0 1px rgba(0, 0, 0, 0.05),
+  sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  default: (
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06),
+  ),
+  md: (
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+  ),
+  lg: (
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+  ),
+  xl: (
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+  ),
+  2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+  outline: 0 0 0 3px rgba(map-get($colors, blue-500), 0.5),
+) !default;
+
+$flex: (
+  1: 1 1 0%,
+  auto: 1 1 auto,
+  initial: 0 1 auto,
+  none: none,
+) !default;
+
+$font-family: (
+  sans: (
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+  ),
+  serif: (
+    Georgia,
+    Cambria,
+    'Times New Roman',
+    Times,
+    serif,
+  ),
+  mono: (
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Liberation Mono',
+    'Courier New',
+    monospace,
+  ),
+) !default;
+
+$font-size: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  lg: 1.25rem,
+  xl: 1.5rem,
+  2xl: 2.25rem,
+  3xl: 3rem,
+  4xl: 4rem,
+  5xl: 5rem,
+  6xl: 6rem,
+) !default;
+
+$font-weight: (
+  hairline: 100,
+  thin: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900,
+) !default;
+
+$height: (
+  auto: auto,
+  full: 100%,
+  screen: 100vh,
+) !default;
+
+$inset: (
+  auto: auto,
+  0: 0,
+) !default;
+
+$letter-spacing: (
+  tighter: -0.05em,
+  tight: -0.025em,
+  normal: 0,
+  wide: 0.025em,
+  wider: 0.05em,
+  widest: 0.1em,
+) !default;
+
+$line-height: (
+  none: 1,
+  tight: 1.25,
+  normal: 1.5,
+  loose: 2,
+) !default;
+
+$max-height: (
+  full: 100%,
+  screen: 100vh,
+) !default;
+
+$max-width: (
+  none: none,
+  xs: 20rem,
+  sm: 24rem,
+  md: 28rem,
+  lg: 32rem,
+  xl: 36rem,
+  full: 100%,
+  screen-xs: 320px,
+  screen-sm: 640px,
+  screen-md: 768px,
+  screen-lg: 1024px,
+  screen-xl: 1280px,
+  screen-2xl: 1440px,
+  screen-3xl: 1600px,
+) !default;
+
+$min-height: (
+  0: 0,
+  full: 100%,
+  screen: 100vh,
+) !default;
+
+$min-width: (
+  0: 0,
+  full: 100%,
+) !default;
+
+$opacity: (
+  0: 0,
+  10: 0.1,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  90: 0.9,
+  100: 1,
+) !default;
+
+$order: (
+  first: -9999,
+  last: 9999,
+  none: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  11: 11,
+  12: 12,
+) !default;
+
+$stroke-width: (
+  0: 0,
+  1: 1,
+  2: 2,
+) !default;
+
+$width: (
+  auto: auto,
+  1\/2: 1/2 * 100%,
+  1\/3: 1/3 * 100%,
+  2\/3: 2/3 * 100%,
+  1\/4: 1/4 * 100%,
+  2\/4: 2/4 * 100%,
+  3\/4: 3/4 * 100%,
+  1\/5: 1/5 * 100%,
+  2\/5: 2/5 * 100%,
+  3\/5: 3/5 * 100%,
+  4\/5: 4/5 * 100%,
+  1\/6: 1/6 * 100%,
+  2\/6: 2/6 * 100%,
+  3\/6: 3/6 * 100%,
+  4\/6: 4/6 * 100%,
+  5\/6: 5/6 * 100%,
+  1\/12: 1/12 * 100%,
+  2\/12: 2/12 * 100%,
+  3\/12: 3/12 * 100%,
+  4\/12: 4/12 * 100%,
+  5\/12: 5/12 * 100%,
+  6\/12: 6/12 * 100%,
+  7\/12: 7/12 * 100%,
+  8\/12: 8/12 * 100%,
+  9\/12: 9/12 * 100%,
+  10\/12: 10/12 * 100%,
+  11\/12: 11/12 * 100%,
+  full: 100%,
+  screen: 100vw,
+) !default;
+
+$z-index: (
+  auto: auto,
+  0: 0,
+  10: 10,
+  20: 20,
+  30: 30,
+  40: 40,
+  50: 50,
+) !default;

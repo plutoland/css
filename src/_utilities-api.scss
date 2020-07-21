@@ -1,0 +1,39 @@
+//
+// Utilities API
+//
+
+// Loop over each breakpoint
+@each $breakpoint, $responsive-variant in $responsive-variants {
+  // Generate media query if needed
+  @include breakpoint($breakpoint) {
+    // Loop over each utility property
+    @each $key, $utility in $utilities {
+      // The utility can be disabled with `false`, thus check if the utility is a map first
+      // Only proceed if responsive media queries are enabled or if it's the base media query
+      @if type-of($utility) ==
+        'map' and
+        (map-get($utility, responsive) or $responsive-variant == '')
+      {
+        // Generate utility
+        @include generate-utility($utility, $responsive-variant);
+
+        // If present, generate pseudo-class variants
+        @if map-get($utility, variants) {
+          $variants: map-get($utility, variants);
+          // Multiple pseudo-class variants are possible, for example hover and focus
+          @if type-of($variants) == 'string' {
+            $variants: append((), $variants);
+          }
+          @each $pseudo-class-variant in $variants {
+            @include generate-utility(
+              $utility,
+              $responsive-variant,
+              $pseudo-class-variant,
+              $separator
+            );
+          }
+        }
+      }
+    }
+  }
+}
