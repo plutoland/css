@@ -29,8 +29,7 @@
 
   // If the values are a list or string, convert it into a map
   @if (
-    (type-of($values) == 'string') or
-      (length($values) != 0 and type-of(nth($values, 1)) != 'list')
+    (type-of($values) == 'string') or (length($values) != 0 and type-of(nth($values, 1)) != 'list')
   ) {
     $values: zip($values, $values);
   }
@@ -60,11 +59,7 @@
     );
 
     // Use pseudo-class variant if present
-    $pseudo-prefix: if(
-      $pseudo-class-variant,
-      $pseudo-class-variant + $separator,
-      ''
-    );
+    $pseudo-prefix: if($pseudo-class-variant, $pseudo-class-variant + $separator, '');
     $pseudo-suffix: if($pseudo-class-variant, ':' + $pseudo-class-variant, '');
 
     @if $value != null {

@@ -11,10 +11,7 @@ $breakpoints: (
   xl: 1280px,
 ) !default;
 
-$responsive-variants: make-responsive-variants(
-  $breakpoints,
-  $separator
-) !default;
+$responsive-variants: make-responsive-variants($breakpoints, $separator) !default;
 
 $colors: (
   transparent: transparent,
@@ -28,7 +25,6 @@ $colors: (
   blue-100: #dbedff,
   blue-500: #0366d6,
   blue-600: #005cc5,
-  brand-blue: #0055ff,
 ) !default;
 
 $gradients: () !default;
