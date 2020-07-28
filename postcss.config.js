@@ -4,13 +4,14 @@ module.exports = {
     sourcesContent: true,
     annotation: true,
   },
-  plugins: {
-    'postcss-node-sass': {
+  plugins: [
+    require('postcss-node-sass')({
       includePaths: ['node_modules'],
       outputStyle: 'expanded',
       indentWidth: 2,
       precision: 6,
-    },
-    autoprefixer: {},
-  },
+    }),
+    require('autoprefixer'),
+    ...(process.env.NODE_ENV === 'production' ? [require('cssnano')] : []),
+  ],
 }
