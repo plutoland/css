@@ -2,8 +2,6 @@
 *.tgz
 .DS_Store
 .cache/
-.changelog/
-.sass-cache
 dist/
 docs/dist/
 node_modules/
